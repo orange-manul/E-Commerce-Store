@@ -79,53 +79,53 @@ class ClientController extends Controller
     }
 
 
-    public function checkout()
-    {
-        $userId = Auth::id();
-        $cart_items = Cart::where('user_id', $userId)->get();
-        $shipping_address = ShippingInfo::where('user_id', $userId)->first();
-        return view('user_template.checkout', compact('shipping_address','cart_items'));
-    }
+//    public function checkout()
+//    {
+//        $userId = Auth::id();
+//        $cart_items = Cart::where('user_id', $userId)->get();
+//        $shipping_address = ShippingInfo::where('user_id', $userId)->first();
+//        return view('user_template.checkout', compact('shipping_address','cart_items'));
+//    }
 
-    public function placeOrder(){
-        $userId = Auth::id();
-        $shipping_address = ShippingInfo::where('user_id', $userId)->first();
-        $cart_items = Cart::where('user_id', $userId)->get();
-
-        foreach($cart_items as $item){
-            Order::insert([
-                'userId' => $userId,
-                'shipping_phoneNumber' => $shipping_address->phone_number,
-                'shipping_city' => $shipping_address->city_name,
-                'shipping_postalCode' => $shipping_address->postal_code,
-                'product_id' => $item->product_id,
-                'quantity' => $item->quantity,
-                'total_price' => $item->price,
-            ]);
-
-            $id = $item->id;
-            Cart::findOrFail($id)->delete();
-        }
-
-        return redirect()->route('pending_orders')->with('message', 'Your order has been place successfully');
-    }
-
-    public function userProfile()
-    {
-        return view('user_template.user_profile');
-    }
-
-    public function pendingOrders()
-    {
-        $userId = Auth::id();
-        $pending_orders = Order::where('userId', $userId)->where('status', 'pending')->latest()->get();
-        return view('user_template.pending_orders', compact('pending_orders'));
-    }
-
-    public function history()
-    {
-        return view('user_template.history');
-    }
+//    public function placeOrder(){
+//        $userId = Auth::id();
+//        $shipping_address = ShippingInfo::where('user_id', $userId)->first();
+//        $cart_items = Cart::where('user_id', $userId)->get();
+//
+//        foreach($cart_items as $item){
+//            Order::insert([
+//                'userId' => $userId,
+//                'shipping_phoneNumber' => $shipping_address->phone_number,
+//                'shipping_city' => $shipping_address->city_name,
+//                'shipping_postalCode' => $shipping_address->postal_code,
+//                'product_id' => $item->product_id,
+//                'quantity' => $item->quantity,
+//                'total_price' => $item->price,
+//            ]);
+//
+//            $id = $item->id;
+//            Cart::findOrFail($id)->delete();
+//        }
+//
+//        return redirect()->route('pending_orders')->with('message', 'Your order has been place successfully');
+//    }
+//
+//    public function userProfile()
+//    {
+//        return view('user_template.user_profile');
+//    }
+//
+//    public function pendingOrders()
+//    {
+//        $userId = Auth::id();
+//        $pending_orders = Order::where('userId', $userId)->where('status', 'pending')->latest()->get();
+//        return view('user_template.pending_orders', compact('pending_orders'));
+//    }
+//
+//    public function history()
+//    {
+//        return view('user_template.history');
+//    }
 
     public function newRelease()
     {
