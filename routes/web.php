@@ -9,6 +9,15 @@ use App\Http\Controllers\Admin\Category\IndexCategoryController;
 use App\Http\Controllers\Admin\Category\StoreCategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryController;
 
+use App\Http\Controllers\Admin\Order\OrderController;
+use App\Http\Controllers\Admin\Product\AddProductController;
+use App\Http\Controllers\Admin\Product\DeleteProductController;
+use App\Http\Controllers\Admin\Product\EditProductController;
+use App\Http\Controllers\Admin\Product\EditProductImageController;
+use App\Http\Controllers\Admin\Product\IndexProductController;
+use App\Http\Controllers\Admin\Product\StoreProductController;
+use App\Http\Controllers\Admin\Product\UpdateProductController;
+use App\Http\Controllers\Admin\Product\UpdateProductImageController;
 use App\Http\Controllers\Admin\SubCategory\AddSubcategoryController;
 use App\Http\Controllers\Admin\SubCategory\DeleteSubcategoryController;
 use App\Http\Controllers\Admin\SubCategory\EditSubcategoryController;
@@ -60,10 +69,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Category'], function () {
         Route::get('/admin/all-category', IndexCategoryController::class,)->name('all.category');
+        #create category
         Route::get('/admin/add-category', AddCategoryController::class)->name('add.category');
         Route::post('/admin/store-category', StoreCategoryController::class)->name('store.category');
+        #update category
         Route::post('/admin/update-category', UpdateCategoryController::class)->name('update.category');
         Route::get('/admin/edit-category/{id}', EditCategoryController::class)->name('edit.category');
+        #delete category
         Route::get('/admin/delete-category/{id}', DeleteCategoryController::class)->name('delete.category');
     });
 
@@ -79,26 +91,26 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         #Delete sub category and using decrement
         Route::get('/admin/delete-subcategory/{id}', DeleteSubcategoryController::class)->name('delete.subcategory');
     });
-    Route::controller(ProductController::class)->group(function () {
+
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Product'], function () {
         #All product
-        Route::get('/admin/all-products', 'index')->name('all.product');
+        Route::get('/admin/all-products', IndexProductController::class)->name('all.product');
         #Add product
-        Route::get('/admin/add-product', 'addProduct')->name('add.product');
-        Route::post('/admin/store-product', 'storeProduct')->name('store.product');
+        Route::get('/admin/add-product', AddProductController::class)->name('add.product');
+        Route::post('/admin/store-product', StoreProductController::class)->name('store.product');
         #Edit product
-        Route::get('/admin/edit-product/{id}', 'editProduct')->name('edit.product');
-        Route::post('/admin/update-product', 'updateProduct')->name('update.product');
+        Route::get('/admin/edit-product/{id}', EditProductController::class)->name('edit.product');
+        Route::post('/admin/update-product', UpdateProductController::class)->name('update.product');
         # Product image edit
-        Route::get('/admin/edit-product-img/{id}', 'editProductImg')->name('edit.product_img');
-        Route::post('/admin/update-product-img', 'updateProductImg')->name('update.product_img');
+        Route::get('/admin/edit-product-img/{id}', EditProductImageController::class)->name('edit.product_img');
+        Route::post('/admin/update-product-img', UpdateProductImageController::class)->name('update.product_img');
         #Delete product
-        Route::get('admin/delete-product/{id}', 'deleteProduct')->name('delete.product');
+        Route::get('admin/delete-product/{id}', DeleteProductController::class)->name('delete.product');
 
     });
 
-
-    Route::controller(OrderController::class)->group(function () {
-        Route::get('/admin/pending-order', 'index')->name('pending.order');
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Order'],function () {
+        Route::get('/admin/pending-order', OrderController::class)->name('pending.order');
     });
 
 });
