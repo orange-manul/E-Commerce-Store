@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
-class IndexSubCategoryController extends Controller
+class IndexSubcategoryController extends Controller
 {
     public function __invoke(Request $request)
     {

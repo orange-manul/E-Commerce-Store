@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\SubCategory\UpdateSubCategoryRequest;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
-class UpdateSubCategoryController extends Controller
+class UpdateSubcategoryController extends Controller
 {
     public function __invoke(UpdateSubCategoryRequest $request)
     {

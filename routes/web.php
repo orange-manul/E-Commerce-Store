@@ -9,12 +9,12 @@ use App\Http\Controllers\Admin\Category\IndexCategoryController;
 use App\Http\Controllers\Admin\Category\StoreCategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryController;
 
-use App\Http\Controllers\Admin\SubCategory\AddSubCategoryController;
-use App\Http\Controllers\Admin\SubCategory\DeleteSubCategoryController;
-use App\Http\Controllers\Admin\SubCategory\EditSubCategoryController;
-use App\Http\Controllers\Admin\SubCategory\IndexSubCategoryController;
-use App\Http\Controllers\Admin\SubCategory\StoreSubCategoryController;
-use App\Http\Controllers\Admin\SubCategory\UpdateSubCategoryController;
+use App\Http\Controllers\Admin\SubCategory\AddSubcategoryController;
+use App\Http\Controllers\Admin\SubCategory\DeleteSubcategoryController;
+use App\Http\Controllers\Admin\SubCategory\EditSubcategoryController;
+use App\Http\Controllers\Admin\SubCategory\IndexSubcategoryController;
+use App\Http\Controllers\Admin\SubCategory\StoreSubcategoryController;
+use App\Http\Controllers\Admin\SubCategory\UpdateSubcategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,15 +69,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::group(['namespace' => 'App\Http\Controllers\Admin\SubCategory'], function () {
         #All sub category
-        Route::get('/admin/all-subcategory', IndexSubCategoryController::class)->name('all.subcategory');
+        Route::get('/admin/all-subcategory', IndexSubcategoryController::class)->name('all.subcategory');
         #Add sub category
-        Route::get('/admin/add-subcategory', AddSubCategoryController::class)->name('add.subcategory');
-        Route::post('/admin/store-subcategory', StoreSubCategoryController::class)->name('store.subcategory');
+        Route::get('/admin/add-subcategory', AddSubcategoryController::class)->name('add.subcategory');
+        Route::post('/admin/store-subcategory', StoreSubcategoryController::class)->name('store.subcategory');
         #Update sub category and using increment
-        Route::get('/admin/edit-subcategory/{id}', EditSubCategoryController::class)->name('edit.subcategory');
-        Route::post('/admin/update-subcategory', UpdateSubCategoryController::class)->name('update.subcategory');
+        Route::get('/admin/edit-subcategory/{id}', EditSubcategoryController::class)->name('edit.subcategory');
+        Route::post('/admin/update-subcategory', UpdateSubcategoryController::class)->name('update.subcategory');
         #Delete sub category and using decrement
-        Route::get('/admin/delete-subcategory/{id}', DeleteSubCategoryController::class)->name('delete.subcategory');
+        Route::get('/admin/delete-subcategory/{id}', DeleteSubcategoryController::class)->name('delete.subcategory');
     });
     Route::controller(ProductController::class)->group(function () {
         #All product

@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
-class DeleteSubCategoryController extends Controller
+class DeleteSubcategoryController extends Controller
 {
     public function __invoke($id)
     {

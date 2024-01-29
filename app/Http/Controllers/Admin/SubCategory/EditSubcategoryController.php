@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
-class EditSubCategoryController extends Controller
+class EditSubcategoryController extends Controller
 {
 
     public function __invoke($id)
