@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\Category\StoreCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class StoreCategoryController extends Controller
 {
 
     public function __invoke(Category $category, StoreCategoryRequest $request){
