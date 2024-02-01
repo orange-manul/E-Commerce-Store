@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Client\Cart;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class RemoveCartItemController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
+    public function __invoke($id)
     {
-        //
+        Cart::findOrFail($id)->delete();
+
+        return redirect()->route('add_to_cart')->with('message', 'Your item remove from cart successfully');
+
     }
 }

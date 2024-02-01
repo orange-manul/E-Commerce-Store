@@ -8,7 +8,12 @@
                         <li><a href="{{ route('user_profile') }}">Dashboard</a></li>
                         <li><a href="{{ route('pending_orders') }}">Pending orders</a></li>
                         <li><a href="{{ route('history') }}">History</a></li>
-                        <li><a href="{{ route('user_profile') }}">Logout</a></li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

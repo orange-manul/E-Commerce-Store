@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\Cart\StoreCartRequest;
 use App\Http\Requests\Client\ShippinAddressStoreRequest;
 use App\Models\Cart;
 use App\Models\Category;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\ShippingInfo;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
@@ -30,12 +29,12 @@ class ClientController extends Controller
         return view('user_template.product', compact('product', 'related_products'));
     }
 
-    public function addToCart()
-    {
-        $userId = Auth::id();
-        $cart_items = Cart::where('user_id', $userId)->get();
-        return view('user_template.add_to_cart', compact('cart_items'));
-    }
+//    public function addToCart()
+//    {
+//        $userId = Auth::id();
+//        $cart_items = Cart::where('user_id', $userId)->get();
+//        return view('user_template.add_to_cart', compact('cart_items'));
+//    }
 
     public function addProductToCart(StoreCartRequest $request)
     {
