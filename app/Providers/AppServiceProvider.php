@@ -2,27 +2,21 @@
 
 namespace App\Providers;
 
+use App\Service\Admin\CategoryService;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+
+    public function register(): void
     {
-        //
+        $this->app->bind(CategoryService::class, function ($app){
+            return new CategoryService();
+        });
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         Schema::defaultStringLength(191);
     }
