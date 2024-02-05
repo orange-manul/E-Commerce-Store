@@ -134,7 +134,7 @@ Route::middleware('auth', 'role:user|admin')->group(function () {
             Route::post('/admin/store-product', StoreProductController::class)->name('store.product');
             #Edit product
             Route::get('/admin/edit-product/{id}', EditProductController::class)->name('edit.product');
-            Route::post('/admin/update-product', UpdateProductController::class)->name('update.product');
+            Route::post('/admin/update-product/', UpdateProductController::class)->name('update.product');
             # Product image edit
             Route::get('/admin/edit-product-img/{id}', EditProductImageController::class)->name('edit.product_img');
             Route::post('/admin/update-product-img', UpdateProductImageController::class)->name('update.product_img');

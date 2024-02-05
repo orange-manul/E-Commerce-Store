@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Subcategory;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseController;
 
-class AddProductController extends Controller
+class AddProductController extends BaseController
 {
 
-    public function __invoke(Request $request)
+    public function __invoke()
     {
-        $categories = Category::latest()->get();
-        $subcategories = Subcategory::latest()->get();
+        $categories = $this->productService->getAllCategories();
+        $subcategories = $this->productService->getAllSubCategories();
+
         return view('admin.addproduct', compact('categories', 'subcategories'));
 
     }

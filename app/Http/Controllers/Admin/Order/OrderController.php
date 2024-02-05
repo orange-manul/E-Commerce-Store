@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Admin\Order;
 
-use App\Http\Controllers\Controller;
-use App\Models\Order;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseController;
+use App\Service\Admin\OrderService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
-class OrderController extends Controller
+class OrderController extends BaseController
 {
 
-    public function __invoke()
+    public function __invoke(OrderService $service): Factory|View|Application
     {
-        $pending_orders = Order::where('status', 'pending')->latest()->get();
-        return view('admin.pendingorders', compact('pending_orders'));
+        $pendingOrders = $this->orderService->getPendingOrders();
+
+        return view('admin.pendingorders', compact('pendingOrders'));
 
     }
 }

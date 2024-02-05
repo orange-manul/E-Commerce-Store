@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
-class EditProductController extends Controller
+class EditProductController extends BaseController
 {
 
     public function __invoke($id)
     {
-        $product_info = Product::findOrFail($id);
+        $product_info = $this->productService->edit($id);
 
         return view('admin.editproduct', compact('product_info'));
 

@@ -2,26 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\Product\UpdateProductRequest;
-use App\Models\Product;
-use Illuminate\Http\Request;
 
-class UpdateProductController extends Controller
+class UpdateProductController extends BaseController
 {
 
-    public function __invoke(UpdateProductRequest $request)
+        public function __invoke(UpdateProductRequest $request)
     {
-        $productId = $request->id;
 
-        Product::findOrFail($productId)->update([
-            'product_name' => $request->product_name,
-            'product_short_desc' => $request->product_short_desc,
-            'product_long_desc' => $request->product_long_desc,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'slug' => strtolower(str_replace(' ', '-', $request->product_name)),
-        ]);
+        $productId = $request->id;
+        $data = $request->validated();
+        $this->productService->update($data, $productId);
 
         return redirect()->route('all.product')->with('message', 'Product Update Successfully');
 

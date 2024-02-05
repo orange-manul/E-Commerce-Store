@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Controller;
-use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseController;
 
-class EditProductImageController extends Controller
+class EditProductImageController extends BaseController
 {
 
     public function __invoke($id)
     {
-        $product_img_info = Product::findOrFail($id);
+        $product_img_info = $this->productService->editImage($id);
         return view('admin.editproductimg', compact('product_img_info'));
 
     }

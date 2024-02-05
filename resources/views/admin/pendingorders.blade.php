@@ -20,7 +20,7 @@
                         <th>Action</th>
                     </tr>
 
-                    @foreach($pending_orders as $order)
+                    @foreach($pendingOrders as $order)
                         <tr>
                             <td>{{ $order->userId }}</td>
                             <td>
