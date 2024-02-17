@@ -34,7 +34,12 @@
                             <td>{{ $order->quantity }}</td>
                             <td>{{ $order->total_price }}</td>
                             <td>{{ $order->status }}</td>
-                            <td><a href="" class="btn btn-success">Approved now</a></td>
+                            <td><form method="POST" action="{{ route('approved.order', ['id' => $order->id]) }}">
+                                    @csrf
+
+                                    <button type="submit" class="btn btn-success">Approved now</button>
+                                </form>
+                            </td>
 
                         </tr>
                     @endforeach

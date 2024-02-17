@@ -12,7 +12,7 @@ Add Product
                     {{ session()->get('message') }}
                 </div>
             @endif
-            <div class="col-xxl">
+            <div class="col-xxl offset-md-1">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">Add New Product</h5>

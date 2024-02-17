@@ -1,16 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
-
 use App\Http\Controllers\Admin\Category\AddCategoryController;
 use App\Http\Controllers\Admin\Category\DeleteCategoryController;
 use App\Http\Controllers\Admin\Category\EditCategoryController;
 use App\Http\Controllers\Admin\Category\IndexCategoryController;
 use App\Http\Controllers\Admin\Category\StoreCategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryController;
-
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Order\ApprovedController;
 use App\Http\Controllers\Admin\Order\OrderController;
-
 use App\Http\Controllers\Admin\Product\AddProductController;
 use App\Http\Controllers\Admin\Product\DeleteProductController;
 use App\Http\Controllers\Admin\Product\EditProductController;
@@ -19,26 +17,21 @@ use App\Http\Controllers\Admin\Product\IndexProductController;
 use App\Http\Controllers\Admin\Product\StoreProductController;
 use App\Http\Controllers\Admin\Product\UpdateProductController;
 use App\Http\Controllers\Admin\Product\UpdateProductImageController;
-
 use App\Http\Controllers\Admin\SubCategory\AddSubcategoryController;
 use App\Http\Controllers\Admin\SubCategory\DeleteSubcategoryController;
 use App\Http\Controllers\Admin\SubCategory\EditSubcategoryController;
 use App\Http\Controllers\Admin\SubCategory\IndexSubcategoryController;
 use App\Http\Controllers\Admin\SubCategory\StoreSubcategoryController;
 use App\Http\Controllers\Admin\SubCategory\UpdateSubcategoryController;
-
 use App\Http\Controllers\Client\Address\AddShippingAddressController;
 use App\Http\Controllers\Client\Address\GetShippingAddres;
-
 use App\Http\Controllers\Client\Cart\AddProductToCartController;
 use App\Http\Controllers\Client\Cart\AddToCartController;
 use App\Http\Controllers\Client\Cart\RemoveCartItemController;
-
 use App\Http\Controllers\Client\Order\CheckoutController;
 use App\Http\Controllers\Client\Order\HistoryController;
 use App\Http\Controllers\Client\Order\PendingOrderController;
 use App\Http\Controllers\Client\Order\PlaceOrderController;
-
 use App\Http\Controllers\Client\Page\CategoryPageController;
 use App\Http\Controllers\Client\Page\CustomServiceController;
 use App\Http\Controllers\Client\Page\NewReleaseController;
@@ -144,7 +137,8 @@ Route::middleware('auth', 'role:user|admin')->group(function () {
         });
 
         Route::group(['namespace' => 'App\Http\Controllers\Admin\Order'], function () {
-            Route::get('/admin/pending-order', OrderController::class)->name('pending.order');
+            Route::get('/admin/pending-order/', OrderController::class)->name('pending.order');
+            Route::post('/admin/pending-order/{id}', ApprovedController::class)->name('approved.order');
         });
 
     });

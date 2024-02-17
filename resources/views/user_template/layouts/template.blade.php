@@ -77,7 +77,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="logo"><a href="{{ route('index.home') }}"><img src="{{ asset('home/images/logo.png') }}"></a></div>
+                    <div class="logo"><a href="{{ route('index.home') }}"><img src="{{ asset('home/images/home.png') }}"></a></div>
                 </div>
             </div>
         </div>
@@ -172,8 +172,6 @@
         </div>
         <div class="footer_menu">
             <ul>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="#">Gift Ideas</a></li>
                 <li><a href="{{ route('new_release') }}">New Releases</a></li>
                 <li><a href="{{ route('todays_deal') }}">Today's Deals</a></li>
                 <li><a href="{{ route('custom_service') }}">Customer Service</a></li>

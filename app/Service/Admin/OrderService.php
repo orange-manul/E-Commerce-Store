@@ -10,4 +10,12 @@ class OrderService
     {
         return Order::where('status', 'pending')->latest()->get();
     }
+
+    public function approvedOrders($orderId)
+    {
+        $order = Order::findOrFail($orderId);
+
+        $order->status = 'successfully';
+        $order->save();
+    }
 }

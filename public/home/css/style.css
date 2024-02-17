@@ -953,5 +953,12 @@ input.mail_bt::placeholder {
     margin-top: 90px;
 }
 
+.paragraph {
+    font-family: Arial, sans-serif; /* Шрифт */
+    font-size: 16px; /* Размер шрифта */
+    line-height: 1.6; /* Межстрочный интервал */
+    color: #333; /* Цвет текста */
+    margin-bottom: 20px; /* Отступ снизу */
+}
 
 /* copyright section end */
